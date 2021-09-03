@@ -9,6 +9,7 @@
   "author": "Jacob Hildebrandt",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^3.3.0"
+    "apollo-server": "^3.3.0",
+    "graphql": "^15.5.2"
   }
 }
