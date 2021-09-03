@@ -2,6 +2,7 @@ const { ApolloServer } = require("apollo-server");
 const mongoose = require("mongoose");
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
+const { models } = require("./db");
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
 
@@ -21,7 +22,9 @@ mongoose
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context() {},
+  context() {
+    return { models };
+  },
 });
 
 server.listen().then(({ url }) => {

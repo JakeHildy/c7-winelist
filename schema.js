@@ -6,6 +6,10 @@ const typeDefs = gql`
     username: String!
   }
 
+  input NewUserInput {
+    username: String!
+  }
+
   type Wine {
     id: ID!
     uploadedAt: String
@@ -23,6 +27,12 @@ const typeDefs = gql`
 
   type Query {
     wines: [Wine]!
+    users: [User]!
+    user(id: String!): User!
+  }
+
+  type Mutation {
+    addUser(input: NewUserInput!): User!
   }
 `;
 
