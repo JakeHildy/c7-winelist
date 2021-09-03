@@ -3,15 +3,15 @@ const { gql } = require("apollo-server");
 const typeDefs = gql`
   type User {
     id: ID!
-    username: String
+    username: String!
   }
 
   type Wine {
     id: ID!
     uploadedAt: String
-    title: String
-    type: String
-    varietal: String
+    title: String!
+    type: String!
+    varietal: String!
     country: String
     vintage: String
     winery: String
