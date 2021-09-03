@@ -20,6 +20,10 @@ const typeDefs = gql`
     likes: Float
     image: String
   }
+
+  type Query {
+    wines: [Wine]!
+  }
 `;
 
 module.exports = typeDefs;
