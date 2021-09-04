@@ -19,12 +19,14 @@ const createUserModel = () => {
       }
     },
     async getUser(id) {
-      try {
-        const user = await User.findById(id);
-        return user;
-      } catch (error) {
-        console.log(error);
-      }
+      return new Promise(async (resolve, reject) => {
+        try {
+          const user = await User.findById(id);
+          resolve(user);
+        } catch (error) {
+          reject(error);
+        }
+      });
     },
   };
 };

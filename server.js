@@ -22,8 +22,11 @@ mongoose
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context() {
-    return { models };
+  async context({ req }) {
+    const user = await models.User.getUser("6134008f0f847752e0f4fcd4");
+    if (!user) throw new Error("not auth");
+    // const isAuth = req.headers.authorization;
+    return { models, user };
   },
 });
 
