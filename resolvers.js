@@ -1,15 +1,19 @@
 module.exports = {
   Query: {
     wines(_, args, { models }) {
-      const wines = models.Wine.getWines();
+      const wines = models.Wine.getAllWines();
       return wines;
     },
     users(_, args, { models }) {
       const users = models.User.getUsers();
       return users;
     },
-    async user(_, { id }, { models }) {
-      const user = await models.User.getUser(id);
+    wine(_, { id }, { models }) {
+      const user = models.Wine.getWine(id);
+      return user;
+    },
+    user(_, { id }, { models }) {
+      const user = models.User.getUser(id);
       return user;
     },
   },
@@ -23,6 +27,14 @@ module.exports = {
       return wine;
     },
   },
-  Wine: {},
-  User: {},
+  Wine: {
+    uploader(wine, _, { models }) {
+      return models.User.getUser(wine.uploader);
+    },
+  },
+  User: {
+    wines(user, _, { models }) {
+      return models.Wine.getWines({ uploader: user.id });
+    },
+  },
 };

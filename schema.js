@@ -58,7 +58,7 @@ const typeDefs = gql`
     vintage: String
     winery: String
     price: Float
-    uploader: String
+    uploader: User
     likes: Float
     image: String
   }
@@ -66,6 +66,7 @@ const typeDefs = gql`
   type Query {
     wines: [Wine]!
     users: [User]!
+    wine(id: String!): Wine
     user(id: String!): User
   }
 

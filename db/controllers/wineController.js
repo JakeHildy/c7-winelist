@@ -10,7 +10,7 @@ const createWineModel = () => {
         console.log(error);
       }
     },
-    async getWines() {
+    async getAllWines() {
       try {
         const Wines = await Wine.find();
         return Wines;
@@ -18,10 +18,18 @@ const createWineModel = () => {
         console.log(error);
       }
     },
+    async getWines(filter) {
+      try {
+        const Wines = await Wine.find(filter);
+        return Wines;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     async getWine(id) {
       try {
-        const Wine = await Wine.findById(id);
-        return Wine;
+        const wine = await Wine.findById(id);
+        return wine;
       } catch (error) {
         console.log(error);
       }
